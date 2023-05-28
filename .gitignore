@@ -1,0 +1,16 @@
+.vscode
+.DS_Store
+.vscode
+/**/target/
+/**/node_modules/
+/**/dist/
+/**/build/
+/**/out/
+/**/logs/
+/**/temp/
+/**/tmp/
+/**/cache/
+/**/.idea/
+/**/.vscode/
+/**/.DS_Store
+/**/.vscode
