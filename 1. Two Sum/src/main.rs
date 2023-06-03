@@ -1,7 +1,6 @@
-#[allow(dead_code)]
+#![allow(dead_code)]
 // Code Snippet: https://leetcode.com/problems/two-sum/
 // imperative approach with O(n^2) time complexity
-#[allow(dead_code)]
 fn two_sum_naive_solution(nums: Vec<i32>, target: i32) -> Vec<i32> {
     for i in 0..nums.len() {
         for j in i+1..nums.len() {
