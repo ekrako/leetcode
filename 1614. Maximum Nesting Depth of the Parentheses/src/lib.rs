@@ -25,23 +25,35 @@ fn max_depth_scan(s: String) -> i32 {
                 _ => *acc,
             };
             Some(*acc)
-        }).max().unwrap_or(0)
+        })
+        .max()
+        .unwrap_or(0)
 }
 
-
 // recursive solution
-fn max_depth(s: String) -> i32 {
+fn max_depth_recur(s: String) -> i32 {
     fn helper(s: &str, depth: i32, max_depth: i32) -> (i32, i32, i32) {
         match s.chars().next() {
             None => (0, depth, max_depth),
-            Some('(') => helper(&s[1..],  depth+1,max_depth.max(depth+1)),
-            Some(')') => helper(&s[1..],depth-1,max_depth),
+            Some('(') => helper(&s[1..], depth + 1, max_depth.max(depth + 1)),
+            Some(')') => helper(&s[1..], depth - 1, max_depth),
             Some(_) => helper(&s[1..], depth, max_depth),
         }
     }
-    helper(&s, 0,0).2
+    helper(&s, 0, 0).2
 }
 
+fn max_depth(s: String) -> i32 {
+    fn helper(s: &str, depth: i32) -> i32 {
+        match s.chars().next() {
+            None => 0,
+            Some('(') => helper(&s[1..],depth+1).max(depth+1),
+            Some(')') => helper(&s[1..],depth-1),
+            Some(_) => helper(&s[1..],depth),
+        }
+    }
+    helper(&s, 0)
+}
 
 #[cfg(test)]
 mod tests {
